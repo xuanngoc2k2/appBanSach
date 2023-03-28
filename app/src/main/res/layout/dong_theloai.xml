@@ -4,6 +4,7 @@
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     android:layout_height="200dp"
+    android:id="@+id/relative_theloai"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/rounded_corner">
     <androidx.cardview.widget.CardView

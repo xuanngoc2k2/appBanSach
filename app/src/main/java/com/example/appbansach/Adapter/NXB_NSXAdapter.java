@@ -1,6 +1,8 @@
 package com.example.appbansach.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.appbansach.Activity.DSSachActivity;
 import com.example.appbansach.R;
 
 import com.example.appbansach.Model.NxbNsx;
@@ -38,6 +43,16 @@ public class NXB_NSXAdapter extends RecyclerView.Adapter<NXB_NSXAdapter.ViewHole
         NxbNsx nxbNsx = nsxArrayList.get(position);
         holder.txtNSX.setText(nxbNsx.getTenNXBNXB());
         Picasso.with(context).load(nxbNsx.getHinhNSXNXB()).into(holder.imgNSX);
+        holder.cardViewNSX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent t = new Intent(context, DSSachActivity.class);
+                Bundle d = new Bundle();
+                d.putString("idNXBNSX",nxbNsx.getIdNSXNXB());
+                t.putExtra("idNXBNSX",d);
+                context.startActivity(t);
+            }
+        });
     }
 
     @Override
@@ -48,8 +63,10 @@ public class NXB_NSXAdapter extends RecyclerView.Adapter<NXB_NSXAdapter.ViewHole
     public class ViewHoler extends RecyclerView.ViewHolder{
         ImageView imgNSX;
         TextView txtNSX;
+        CardView cardViewNSX;
         public ViewHoler(@NonNull View itemView) {
             super(itemView);
+            cardViewNSX = itemView.findViewById(R.id.cardviewNSX);
             imgNSX = itemView.findViewById(R.id.imgNXB_NSX);
             txtNSX = itemView.findViewById(R.id.txtTenNSX);
         }

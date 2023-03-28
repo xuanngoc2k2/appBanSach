@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#282838"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/previous"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/imgback"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/txtSeach"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:hint="Tìm sách tại đây"
+        android:textColor="#fff"
+        android:textColorHint="#A4FFFFFF" />
+
+    <TextView
+        android:id="@+id/txtnotf"
+        android:paddingLeft="20dp"
+        android:textSize="14sp"
+        android:layout_toRightOf="@+id/imgback"
+        android:textColor="#A4FFFFFF"
+        android:layout_below="@+id/txtSeach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Không tìm thấy"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_dssach"
+        android:layout_below="@+id/txtSeach"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

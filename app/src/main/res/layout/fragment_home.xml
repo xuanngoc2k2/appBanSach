@@ -44,6 +44,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_nxb_nsx" />
+
+        <fragment
+            android:name="com.example.appbansach.Fragment.Fragment_Chude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_chude"/>
+        <fragment
+            android:name="com.example.appbansach.Fragment.Fragment_SachBanChay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_sachbanchay"/>
     </LinearLayout>
 
 </ScrollView>

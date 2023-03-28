@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#282838"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/previous"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/imgback"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_marginLeft="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="#fff"
+        android:id="@+id/txtSeach"
+        android:hint="Search sách tại đây"
+        android:textColorHint="#A4FFFFFF" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/txtSeach"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

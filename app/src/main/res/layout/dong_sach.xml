@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:padding="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="10dp"
+    android:layout_gravity="center"
+    android:background="#E6FFFFFF"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        android:scaleType="fitXY"
+        android:id="@+id/imgSach" />
+    <RelativeLayout
+        android:id="@+id/grouptengia"
+        android:layout_below="@+id/imgSach"
+        android:layout_width="100dp"
+        android:layout_height="40dp">
+        <TextView
+            android:textColor="#000"
+            android:ellipsize="end"
+            android:maxWidth="100dp"
+            android:maxLines="2"
+            android:textSize="14sp"
+            android:text="Chinh Phục 8+"
+            android:layout_marginTop="5dp"
+            android:id="@+id/txtTenSach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:text="46000đ"
+        android:textColor="#00AA9E"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtGiaSach"
+        android:layout_below="@+id/grouptengia"/>
+    <ImageView
+        android:src="@drawable/cart2"
+        android:scaleType="fitXY"
+        android:layout_toRightOf="@+id/grouptengia"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/imgSach"
+        android:layout_width="40dp"
+        android:layout_height="40dp">
+    </ImageView>
+</RelativeLayout>
