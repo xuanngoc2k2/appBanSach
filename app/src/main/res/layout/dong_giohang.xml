@@ -1,30 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#282838"
-    android:layout_height="match_parent">
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/previous"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/imgback"
-        android:layout_marginTop="10dp" />
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:id="@+id/imgSp"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/imgSp">
 
-    <EditText
-        android:layout_marginLeft="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:textColor="#fff"
-        android:id="@+id/txtSeach"
-        android:hint="Search sách tại đây"
-        android:textColorHint="#A4FFFFFF" />
+        <TextView
+            android:id="@+id/txtTenSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chinh Phục Toán 8+"
+            android:maxWidth="200dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/txtSeach"
-        android:layout_marginLeft="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtGiasp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="400000đ"
+                android:textColor="#757575"
+                android:textSize="18dp" />
+            <RelativeLayout
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/txtGiasp"
+                android:layout_width="wrap_content"
+                android:id="@+id/relslsp"
+                android:padding="5dp"
+                android:background="@drawable/border_nho"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/minus"
+                    android:layout_marginTop="3dp"
+                    android:layout_width="15dp"
+                    android:id="@+id/imgMinus"
+                    android:layout_height="15dp" />
+                <TextView
+                    android:layout_toRightOf="@+id/imgMinus"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/txtsl"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"
+                    android:text="10">
+                </TextView>
+                <ImageView
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/plus"
+                    android:layout_marginTop="3dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:id="@+id/imgAdd"
+                    android:layout_toRightOf="@+id/txtsl"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </RelativeLayout>
+            <TextView
+                android:textColor="#FF0000"
+                android:id="@+id/txtQuasl"
+                android:text="Vượt quá số lượng"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/relslsp">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imgDel"
+        android:src="@drawable/multiply"
+        android:layout_marginTop="45dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"/>
 </RelativeLayout>

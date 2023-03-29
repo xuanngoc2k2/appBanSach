@@ -34,8 +34,8 @@ public class DSSachActivity extends AppCompatActivity {
     String idTheLoai="";
     EditText txtSeach;
     TextView txtNotfound;
-    private String idNXBNSX;
-    private String idChude;
+    private String idNXBNSX="";
+    private String idChude="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,6 @@ public class DSSachActivity extends AppCompatActivity {
         if(intent.hasExtra("idTheLoai")){
             Bundle d = intent.getBundleExtra("idTheLoai");
             idTheLoai = d.getString("idTL");
-            Log.d("AAA", idTheLoai);
             getDataTheLoai();
         }
         if(intent.hasExtra("idNXBNSX")){
@@ -68,45 +67,131 @@ public class DSSachActivity extends AppCompatActivity {
             }
         });
         txtSeach = findViewById(R.id.txtSeach);
-        txtSeach.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        if(!idNXBNSX.equals("")){
+            txtSeach.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
+                }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String txtTim = txtSeach.getText().toString().trim();
-                DataService db = APIService.getService();
-                Call<List<Sach>> cb= db.Tim(txtTim);
-                cb.enqueue(new Callback<List<Sach>>() {
-                    @Override
-                    public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
-                        ArrayList<Sach> sachArrayList = (ArrayList<Sach>) response.body();
-                        dssach.setLayoutManager(new GridLayoutManager(DSSachActivity.this,2));
-                        sachAdapter = new SachAdapter(DSSachActivity.this,sachArrayList);
-                        if(sachArrayList.size()>0){
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String txtTim = txtSeach.getText().toString().trim();
+                    if(!txtTim.equals("")){
+                        DataService db = APIService.getService();
+                        Call<List<Sach>> cb= db.TimTheoNXS(txtTim, Integer.parseInt(idNXBNSX));
+                        cb.enqueue(new Callback<List<Sach>>() {
+                            @Override
+                            public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
+                                ArrayList<Sach> sachArrayList = (ArrayList<Sach>) response.body();
+                                dssach.setLayoutManager(new GridLayoutManager(DSSachActivity.this,2));
+                                sachAdapter = new SachAdapter(DSSachActivity.this,sachArrayList);
+                                if(sachArrayList.size()>0){
+                                    txtNotfound.setVisibility(View.INVISIBLE);
+                                }
+                                else{
+                                    txtNotfound.setText("Không tìm thấy "+txtTim.trim());
+                                    txtNotfound.setVisibility(View.VISIBLE);
+                                }
+                                dssach.setAdapter(sachAdapter);
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<Sach>> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+        }
+        if(!idTheLoai.equals("")){
+            txtSeach.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String txtTim = txtSeach.getText().toString().trim();
+                    DataService db = APIService.getService();
+                    Call<List<Sach>> cb = db.TimTheoTheLoai(txtTim, Integer.parseInt(idTheLoai));
+                    cb.enqueue(new Callback<List<Sach>>() {
+                        @Override
+                        public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
+                            ArrayList<Sach> sachArrayList = (ArrayList<Sach>) response.body();
+                            dssach.setLayoutManager(new GridLayoutManager(DSSachActivity.this,2));
+                            sachAdapter = new SachAdapter(DSSachActivity.this,sachArrayList);
+                            if(sachArrayList.size()>0){
+                                txtNotfound.setVisibility(View.INVISIBLE);
+                            }
+                            else{
+                                txtNotfound.setText("Không tìm thấy "+txtTim.trim());
+                                txtNotfound.setVisibility(View.VISIBLE);
+                            }
                             dssach.setAdapter(sachAdapter);
-                            txtNotfound.setVisibility(View.INVISIBLE);
                         }
-                        else{
-                            txtNotfound.setText("Không tìm thấy "+txtTim.trim());
-                            txtNotfound.setVisibility(View.VISIBLE);
+
+                        @Override
+                        public void onFailure(Call<List<Sach>> call, Throwable t) {
+
                         }
-                    }
+                    });
+                }
 
-                    @Override
-                    public void onFailure(Call<List<Sach>> call, Throwable t) {
+                @Override
+                public void afterTextChanged(Editable s) {
 
-                    }
-                });
-            }
+                }
+            });
+        }
+        if(!idChude.equals("")){
+            txtSeach.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            @Override
-            public void afterTextChanged(Editable s) {
+                }
 
-            }
-        });
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String txtTim = txtSeach.getText().toString().trim();
+                    DataService db = APIService.getService();
+                    Call<List<Sach>> cb = db.TimTheoChuDe(txtTim, Integer.parseInt(idChude));
+                    cb.enqueue(new Callback<List<Sach>>() {
+                        @Override
+                        public void onResponse(Call<List<Sach>> call, Response<List<Sach>> response) {
+                            ArrayList<Sach> sachArrayList = (ArrayList<Sach>) response.body();
+                            dssach.setLayoutManager(new GridLayoutManager(DSSachActivity.this,2));
+                            sachAdapter = new SachAdapter(DSSachActivity.this,sachArrayList);
+                            if(sachArrayList.size()>0){
+                                txtNotfound.setVisibility(View.INVISIBLE);
+                            }
+                            else{
+                                txtNotfound.setText("Không tìm thấy "+txtTim.trim());
+                                txtNotfound.setVisibility(View.VISIBLE);
+                            }
+                            dssach.setAdapter(sachAdapter);
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Sach>> call, Throwable t) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+        }
     }
 
     private void getDataChude() {

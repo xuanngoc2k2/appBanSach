@@ -41,6 +41,7 @@
         android:id="@+id/txtGiaSach"
         android:layout_below="@+id/grouptengia"/>
     <ImageView
+        android:id="@+id/imgThemgh"
         android:src="@drawable/cart2"
         android:scaleType="fitXY"
         android:layout_toRightOf="@+id/grouptengia"

@@ -1,7 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#282838">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F7F7F7">
+    <RelativeLayout
+        android:id="@+id/relcanhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/user"
+            android:id="@+id/imguser"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/txtCanhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imguser"
+            android:text="Đăng nhập"
+            android:textColor="#4050BB"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relcart"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/relcanhan"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="serif-monospace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="Cart"
+            android:textStyle="bold"
+            android:id="@+id/txtCart"
+            android:textColor="#0C0C0C" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/txtCart"
+            android:layout_marginTop="10dp"
+            android:id="@+id/dsGiohang"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/relGia"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txttotal"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="#757575"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total:"/>
+
+            <TextView
+                android:id="@+id/txtGia"
+                android:textColor="#353738"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:text="0đ"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="95dp"
+            android:layout_below="@+id/relGia"
+            android:layout_width="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="55dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/checkout">
+                </ImageView>
+
+                <TextView
+                    android:textStyle="bold"
+                    android:fontFamily="serif-monospace"
+                    android:textColor="#E4E4E4"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:text="Checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>

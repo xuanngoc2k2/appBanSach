@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,12 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder>{
         Picasso.with(context).load(sach.getHinhSach()).into(holder.imgSach);
         holder.txtTensach.setText(sach.getTenSach());
         holder.txtGia.setText(sach.getGiaBan()+"đ");
+        holder.imgThemgh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,sach.getTenSach(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -48,13 +55,14 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtTensach,txtGia;
-        ImageView imgSach;
+        ImageView imgSach,imgThemgh;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTensach = itemView.findViewById(R.id.txtTenSach);
             txtGia = itemView.findViewById(R.id.txtGiaSach);
             imgSach =itemView.findViewById(R.id.imgSach);
+            imgThemgh = itemView.findViewById(R.id.imgThemgh);
         }
     }
 }

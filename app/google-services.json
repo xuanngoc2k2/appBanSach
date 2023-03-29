@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "793266895465",
+    "project_id": "mylogin-57667",
+    "storage_bucket": "mylogin-57667.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793266895465:android:0de93ad66f049c5a0c00f8",
+        "android_client_info": {
+          "package_name": "com.example.appbansach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793266895465-qcc85qmnooibp759chb0v5to39aa8p57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDbXhrVd3rYeYBsm4UwgivcH3n5YJjHkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793266895465-ml65ihccqr7s884ldvbaiuil7v7egc94.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

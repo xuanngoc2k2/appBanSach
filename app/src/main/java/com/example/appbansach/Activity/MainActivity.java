@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
         mainViewPagerAdapter.addFragment(new Fragment_Home(),"Home");
         mainViewPagerAdapter.addFragment(new Fragment_Search(),"Search");
-        mainViewPagerAdapter.addFragment(new Fragment_Person(),"Personal");
+        mainViewPagerAdapter.addFragment(new Fragment_Person(),"User");
         viewPager.setAdapter(mainViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.home);

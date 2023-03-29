@@ -2,6 +2,7 @@ package com.example.appbansach.Service;
 
 import com.example.appbansach.Model.ChuDe;
 import com.example.appbansach.Model.DealHot;
+import com.example.appbansach.Model.GioHang;
 import com.example.appbansach.Model.NxbNsx;
 import com.example.appbansach.Model.Sach;
 import com.example.appbansach.Model.TheLoai;
@@ -31,6 +32,9 @@ public interface DataService {
     @GET("sachmoi.php")
     Call<List<Sach>> GetSachBanChay();
 
+    @GET("getallsach.php")
+    Call<List<Sach>> GetAllSach();
+
     @FormUrlEncoded
     @POST("dssach.php")
     Call<List<Sach>> GetSachTheoTL(@Field("idTheLoai") int idTheLoai);
@@ -45,5 +49,30 @@ public interface DataService {
 
     @FormUrlEncoded
     @POST("dssach.php")
-    Call<List<Sach>> Tim(@Field("txtTim") String txtTim);
+    Call<List<Sach>> Tim(@Field("tukhoa") String tukhoa);
+
+    @FormUrlEncoded
+    @POST("dssach.php")
+    Call<List<Sach>> TimTheoNXS(@Field("tukhoa") String tukhoa,@Field("idNhaSanXuat") int idNhaSanXuat);
+
+    @FormUrlEncoded
+    @POST("dssachtheloai.php")
+    Call<List<Sach>> TimTheoTheLoai(@Field("tukhoa") String tukhoa,@Field("idTheLoai") int idTheLoai);
+
+    @FormUrlEncoded
+    @POST("dssach.php")
+    Call<List<Sach>> TimTheoChuDe(@Field("tukhoa") String tukhoa,@Field("idChuDe") int idChuDe);
+
+    @FormUrlEncoded
+    @POST("usergiohang.php")
+    Call<List<GioHang>> GetGioHangTheoUser(@Field("idUser") int idUser);
+
+    @FormUrlEncoded
+    @POST("deletegiohang.php")
+    Call<String> DeleteGioHang(@Field("idUser") int idUser,@Field("idSach") int idSach);
+
+    @FormUrlEncoded
+    @POST("updateslgiohang.php")
+    Call<String> UpdateGioHang(@Field("idUser") int idUser,@Field("idSach") int idSach,@Field("soLuong") int soLuong);
+
 }

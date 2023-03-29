@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#282838"
     android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/txt_Seach"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Tìm sách tại đây"
+        android:textColor="#fff"
+        android:textColorHint="#A4FFFFFF" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/txt_notf"
+        android:paddingLeft="20dp"
+        android:textSize="14sp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#A4FFFFFF"
+        android:layout_below="@+id/txt_Seach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Không tìm thấy"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_dssach_tim"
+        android:layout_below="@+id/txt_Seach"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
