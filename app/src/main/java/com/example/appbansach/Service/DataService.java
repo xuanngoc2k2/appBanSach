@@ -83,5 +83,15 @@ public interface DataService {
     @POST("updategia.php")
     Call<String> UpdateTongTien(@Field("idUser") int idUser);
 
+    @FormUrlEncoded
+    @POST("getuser.php")
+    Call<String> GetUser(@Field("tenUser") String tenUser);
 
+    @FormUrlEncoded
+    @POST("getidUser.php")
+    Call<String> GetidUser(@Field("tenUser") String tenUser);
+
+    @FormUrlEncoded
+    @POST("insertuser.php")
+    Call<String> ThemUser(@Field("tenUser") String tenUser,@Field("hinhUser") String hinhUser,@Field("pass") String pass);
 }

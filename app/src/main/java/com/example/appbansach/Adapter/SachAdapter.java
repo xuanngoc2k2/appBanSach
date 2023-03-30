@@ -1,6 +1,7 @@
 package com.example.appbansach.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appbansach.Activity.MainActivity;
+import com.example.appbansach.Fragment.Fragment_Person;
 import com.example.appbansach.Model.Sach;
 import com.example.appbansach.R;
 import com.example.appbansach.Service.APIService;
@@ -26,10 +29,24 @@ import retrofit2.Response;
 public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder>{
     Context context;
     ArrayList<Sach> arrayListSach;
-    String idUser = "1";
+    int idUser;
+    String Username = MainActivity.Username;
     public SachAdapter(Context context, ArrayList<Sach> arrayListSach) {
         this.context = context;
         this.arrayListSach = arrayListSach;
+        DataService db = APIService.getService();
+        Call<String> cb = db.GetidUser(Username);
+        cb.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                idUser = Integer.parseInt(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
 
     @NonNull
@@ -50,11 +67,10 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
                 DataService db = APIService.getService();
-                Call<String> cb = db.UpdateSPGioHang(Integer.parseInt(idUser),Integer.parseInt(sach.getIdSach()));
+                Call<String> cb = db.UpdateSPGioHang(idUser,Integer.parseInt(sach.getIdSach()));
                 cb.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-//                        Toast.makeText(context,response.body().toString(),Toast.LENGTH_SHORT).show();
                         if(response.body().equals("OK")){
                             Toast.makeText(context,"Thêm thành công",Toast.LENGTH_SHORT).show();
                         }

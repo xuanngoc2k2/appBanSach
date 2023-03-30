@@ -1,6 +1,7 @@
 package com.example.appbansach.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +28,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Fragment_Chude extends Fragment {
+public class Fragment_Chude extends Fragment{
     private View view;
     RecyclerView recyclerViewCD;
     ChuDeAdapter chuDeAdapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

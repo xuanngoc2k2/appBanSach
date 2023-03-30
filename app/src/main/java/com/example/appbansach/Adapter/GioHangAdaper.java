@@ -26,7 +26,7 @@ import retrofit2.Response;
 
 public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler> {
     Context context;
-    String idUser="1";
+    int idUser;
     ArrayList<GioHang> gioHangs;
     OnItemClickListener listener;
     public void setOnItemClickListener(OnItemClickListener listener){
@@ -34,6 +34,12 @@ public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler>
     }
     public GioHangAdaper(Context context, ArrayList<GioHang> gioHangs) {
         this.context = context;
+        this.gioHangs = gioHangs;
+    }
+
+    public GioHangAdaper(Context context,ArrayList<GioHang> gioHangs, int idUser) {
+        this.context = context;
+        this.idUser = idUser;
         this.gioHangs = gioHangs;
     }
 
@@ -64,7 +70,7 @@ public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler>
                     Log.d("CCC", String.valueOf(sl));
                     holder.txtGiaSP.setText(gb*sl+"đ");
                     DataService db = APIService.getService();
-                    Call<String> cb = db.UpdateGioHang(Integer.parseInt(idUser),Integer.parseInt(gioHang.getIdSach()),sl);
+                    Call<String> cb = db.UpdateGioHang(idUser,Integer.parseInt(gioHang.getIdSach()),sl);
                     cb.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
@@ -91,7 +97,7 @@ public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler>
                     Log.d("CCC", String.valueOf(sl));
                     holder.txtGiaSP.setText(gb*sl+"đ");
                     DataService db = APIService.getService();
-                    Call<String> cb = db.UpdateGioHang(Integer.parseInt(idUser),Integer.parseInt(gioHang.getIdSach()),sl);
+                    Call<String> cb = db.UpdateGioHang(idUser,Integer.parseInt(gioHang.getIdSach()),sl);
                     cb.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
@@ -114,7 +120,7 @@ public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler>
             @Override
             public void onClick(View v) {
                 DataService db = APIService.getService();
-                Call<String> cb = db.DeleteGioHang(Integer.parseInt(idUser),Integer.parseInt(gioHang.getIdSach()));
+                Call<String> cb = db.DeleteGioHang(idUser,Integer.parseInt(gioHang.getIdSach()));
                 cb.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {

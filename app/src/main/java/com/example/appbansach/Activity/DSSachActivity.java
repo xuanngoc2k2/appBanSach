@@ -36,7 +36,6 @@ public class DSSachActivity extends AppCompatActivity {
     TextView txtNotfound;
     private String idNXBNSX="";
     private String idChude="";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
