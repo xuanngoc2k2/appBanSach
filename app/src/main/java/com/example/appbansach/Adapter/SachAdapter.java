@@ -13,14 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbansach.Model.Sach;
 import com.example.appbansach.R;
+import com.example.appbansach.Service.APIService;
+import com.example.appbansach.Service.DataService;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder>{
     Context context;
     ArrayList<Sach> arrayListSach;
-
+    String idUser = "1";
     public SachAdapter(Context context, ArrayList<Sach> arrayListSach) {
         this.context = context;
         this.arrayListSach = arrayListSach;
@@ -43,7 +49,28 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder>{
         holder.imgThemgh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,sach.getTenSach(),Toast.LENGTH_SHORT).show();
+                DataService db = APIService.getService();
+                Call<String> cb = db.UpdateSPGioHang(Integer.parseInt(idUser),Integer.parseInt(sach.getIdSach()));
+                cb.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+//                        Toast.makeText(context,response.body().toString(),Toast.LENGTH_SHORT).show();
+                        if(response.body().equals("OK")){
+                            Toast.makeText(context,"Thêm thành công",Toast.LENGTH_SHORT).show();
+                        }
+                        else if(response.body().equals("Qua")){
+                            Toast.makeText(context,"Vượt quá số lượng",Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(context,"Something wrong",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+
+                    }
+                });
             }
         });
     }

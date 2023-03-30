@@ -33,6 +33,7 @@
         android:layout_marginLeft="15dp"
         android:layout_width="wrap_content"
         android:layout_below="@+id/relcanhan"
+        android:layout_marginBottom="100dp"
         android:layout_height="wrap_content">
 
         <TextView
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content" />
     </RelativeLayout>
     <RelativeLayout
+        android:background="#F6F6F6"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

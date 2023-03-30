@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,7 @@ import retrofit2.Response;
 public class Fragment_Person extends Fragment{
     private View view;
     RecyclerView dsGioHang;
+    TextView txtGia;
     GioHangAdaper gioHangAdaper;
     String idUser="1";
     @Nullable
@@ -46,6 +48,21 @@ public class Fragment_Person extends Fragment{
     }
     private void getData() {
         DataService db = APIService.getService();
+        Call<String> cbb = db.UpdateTongTien(Integer.parseInt(idUser));
+        cbb.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(!response.body().equals("")){
+                    txtGia.setText(response.body().toString()+"đ");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
         Call<List<GioHang>> cb = db.GetGioHangTheoUser(Integer.parseInt(idUser));
         cb.enqueue(new Callback<List<GioHang>>() {
             @Override
@@ -61,7 +78,6 @@ public class Fragment_Person extends Fragment{
                         Fragment_Person.this.getData();
                     }
                 });
-
             }
 
             @Override
@@ -73,6 +89,7 @@ public class Fragment_Person extends Fragment{
 
     private void anhxa() {
         dsGioHang = view.findViewById(R.id.dsGiohang);
+        txtGia = view.findViewById(R.id.txtGia);
     }
 
     private void event() {

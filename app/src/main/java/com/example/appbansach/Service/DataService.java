@@ -75,4 +75,13 @@ public interface DataService {
     @POST("updateslgiohang.php")
     Call<String> UpdateGioHang(@Field("idUser") int idUser,@Field("idSach") int idSach,@Field("soLuong") int soLuong);
 
+    @FormUrlEncoded
+    @POST("updategiohang.php")
+    Call<String> UpdateSPGioHang(@Field("idUser") int idUser,@Field("idSach") int idSach);
+
+    @FormUrlEncoded
+    @POST("updategia.php")
+    Call<String> UpdateTongTien(@Field("idUser") int idUser);
+
+
 }

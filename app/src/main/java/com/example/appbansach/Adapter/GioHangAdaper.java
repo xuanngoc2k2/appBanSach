@@ -68,7 +68,7 @@ public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler>
                     cb.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-
+                            listener.onImgDelClick();
                         }
 
                         @Override
@@ -95,7 +95,7 @@ public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler>
                     cb.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-
+                            listener.onImgDelClick();
                         }
 
                         @Override
@@ -120,6 +120,8 @@ public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler>
                     public void onResponse(Call<String> call, Response<String> response) {
                         if(response.body().equals("OK")){
                             Toast.makeText(context,"Thành công",Toast.LENGTH_SHORT).show();
+                            gioHangs.remove(gioHang);
+                            listener.onImgDelClick();
                         }
                     }
 
@@ -128,7 +130,6 @@ public class GioHangAdaper extends RecyclerView.Adapter<GioHangAdaper.ViewHoler>
 
                     }
                 });
-                listener.onImgDelClick();
             }
         });
     }
